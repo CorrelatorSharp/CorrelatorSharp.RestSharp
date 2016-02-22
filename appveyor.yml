@@ -7,7 +7,7 @@ configuration: Release
 platform: Any CPU
 assembly_info:
   patch: true
-  file: Source\**\AssemblyInfo.*
+  file: '**\AssemblyInfo.*'
   assembly_version: '$(release_version).0'
   assembly_file_version: '$(release_version).0'
   assembly_informational_version: '$(release_version)'
