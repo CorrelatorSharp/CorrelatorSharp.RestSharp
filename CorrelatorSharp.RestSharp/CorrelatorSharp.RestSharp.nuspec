@@ -5,7 +5,7 @@
     <version>$version$</version>
     <authors>Ivan Zlatev</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>CorrelatorSharp</description>
+    <description>RestSharp support for CorrelatorSharp.</description>
     <projectUrl>https://github.com/CorrelatorSharp</projectUrl>
     <dependencies>
       <dependency id="CorrelatorSharp" version="[1.1.0,2)" />
