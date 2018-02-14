@@ -1,5 +1,4 @@
-﻿using System;
-using RestSharp;
+﻿using RestSharp;
 
 namespace CorrelatorSharp.RestSharp
 {
@@ -11,7 +10,8 @@ namespace CorrelatorSharp.RestSharp
         /// <param name="request">The RestSharp.RestRequest</param>
         public static void AddCorrelationHeader(this IRestRequest request)
         {
-            request.AddHeader(Headers.CorrelationId, ActivityScope.Current?.Id ?? Guid.NewGuid().ToString());
+            var scope = ActivityScope.Current ?? ActivityScope.New(request.Resource);
+            request.AddHeader(Headers.CorrelationId, scope.Id);
         }
     }
 }
