@@ -12,6 +12,16 @@ namespace CorrelatorSharp.RestSharp
         {
             var scope = ActivityScope.Current ?? ActivityScope.New(request.Resource);
             request.AddHeader(Headers.CorrelationId, scope.Id);
+            
+            if (string.IsNullOrWhiteSpace(scope.ParentId) == false)
+            {
+                request.AddHeader(Headers.CorrelationParentId, scope.ParentId);
+            }
+
+            if (string.IsNullOrWhiteSpace(scope.Name) == false)
+            {
+                request.AddHeader(Headers.CorrelationName, scope.Name);
+            }
         }
     }
 }

@@ -15,6 +15,16 @@ namespace CorrelatorSharp.RestSharp
         {
             var scope = ActivityScope.Current ?? ActivityScope.New(client.BaseUrl.ToString());
             client.AddDefaultHeader(Headers.CorrelationId, scope.Id);
+
+            if (string.IsNullOrWhiteSpace(scope.ParentId) == false)
+            {
+                client.AddDefaultHeader(Headers.CorrelationParentId, scope.ParentId);
+            }
+
+            if (string.IsNullOrWhiteSpace(scope.Name) == false)
+            {
+                client.AddDefaultHeader(Headers.CorrelationName, scope.Name);
+            }
         }
     }
 }
